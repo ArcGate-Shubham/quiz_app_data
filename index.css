@@ -69,6 +69,7 @@ input[type="email"] {
 
 #question {
   margin-bottom: 20px;
+  margin-left: 70px;
 }
 
 #options label {
@@ -154,4 +155,32 @@ button {
   float: right;
   margin-right: 200px;
   font-weight: lighter;
+}
+
+#heading{
+  margin-top: 200px;
+  color: darkred;
+  font-size: 100px;
+}
+
+#scoreTable{
+  margin-left: 400px;
+  margin-top: 30px;
+}
+
+#result_data{
+  margin-left: 440px;
+}
+
+#restart{
+  margin-left: 530px;
+  margin-top: 30px;
+}
+
+#submitbtn{
+  margin-top: 10px;
+}
+
+#previous{
+  margin-left: 70px;
 }

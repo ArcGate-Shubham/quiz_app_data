@@ -32,11 +32,11 @@ let question_data = [
 ];
 
 let current_user_data = {};
+const usernameDisplay = document.getElementById("usernameDisplay");
 const login_modal = document.getElementById("login_modal");
 const form_data = document.getElementById("form");
 const usernameInput = document.getElementById("username");
 const email_data = document.getElementById("emailInput");
-const usernameDisplay = document.getElementById("usernameDisplay");
 let back = document.getElementById("previous");
 let box_question = document.getElementById("boxquiz");
 let resultPage = document.getElementById("resultPage");
@@ -70,6 +70,7 @@ function getCookie(name) {
   return null;
 }
 
+// We stored data in local storage using JSON stringify
 function set_current_state_page() {
   localStorage.setItem(
     current_user_data.email,
@@ -77,10 +78,12 @@ function set_current_state_page() {
   );
 }
 
+// data stored in Cookies
 function store_cookies() {
   setCookie("user", current_user_data);
 }
 
+// data store is page by page
 function store_current_screen_data() {
   const cookieStorage = getCookie("user");
   const localStorageData = localStorage.getItem("user");
@@ -113,16 +116,21 @@ function store_current_screen_data() {
   resultPage.style.display = "none";
 }
 
+// When window are loaded then that data stored
 window.addEventListener("load", () => {
   store_current_screen_data();
 });
 
+
+// when question is not present for particular user then this event is call it
 window.addEventListener("beforeunload", () => {
   if (current_user_data.currentQuestion !== undefined) {
     store_cookies();
   }
 });
 
+
+// get username or email data and after validation data are stored in local storage
 form_data.addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -170,6 +178,8 @@ form_data.addEventListener("submit", function (event) {
 
 const submit = document.getElementById("submit");
 let userAnswers = current_user_data.userAnswers || [];
+
+// When login formality are done after that question are loaded for that user
 function loadQuestion() {
   if (current_user_data.currentQuestion === undefined) {
     current_user_data.currentQuestion = 0;
@@ -201,6 +211,7 @@ function loadQuestion() {
   }
 }
 
+// Here we get all of questions or their answers
 function updateOptions() {
   let choices = document.getElementsByName("choice");
   let select_value = -1;
@@ -237,6 +248,7 @@ function updateOptions() {
 
 submit.addEventListener("click", updateOptions);
 
+// show result table after submit all quiz or in existing user case
 function show_result_page() {
   login_modal.style.display = "none";
   box_question.style.display = "none";
@@ -265,6 +277,7 @@ function show_result_page() {
   });
 }
 
+// scrore are calculate in this function
 function add_score() {
   let score = 0;
   for (let i = 0; i < question_data.length; i++) {
@@ -277,6 +290,8 @@ function add_score() {
   store_cookies();
 }
 
+
+// render of previous question
 function PreviousQuestion() {
   current_user_data.currentQuestion--;
   set_current_state_page();
@@ -286,6 +301,8 @@ function PreviousQuestion() {
 
 back.addEventListener("click", PreviousQuestion);
 
+
+// restart te quiz
 function restartApp() {
   if (localStorage.length >= 10) {
     alert("Session timeout. Maximum number of users logged in.");
