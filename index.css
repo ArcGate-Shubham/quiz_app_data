@@ -157,30 +157,38 @@ button {
   font-weight: lighter;
 }
 
-#heading{
+#heading {
   margin-top: 200px;
   color: darkred;
   font-size: 100px;
 }
 
-#scoreTable{
+#scoreTable {
   margin-left: 400px;
   margin-top: 30px;
 }
 
-#result_data{
+#result_data {
   margin-left: 440px;
 }
 
-#restart{
+#restart {
   margin-left: 530px;
   margin-top: 30px;
 }
 
-#submitbtn{
+#submitbtn {
   margin-top: 10px;
 }
 
-#previous{
+#previous {
   margin-left: 70px;
+}
+
+#body_data {
+  background-color: rgb(30, 98, 101);
+}
+
+#container_data {
+  background-color: #8c95ad;
 }
